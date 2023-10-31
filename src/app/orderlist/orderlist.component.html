@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="container mt-5 mb-5">
+    <button class="btn btn- float-end mb-3" (click)="goToPayments()"><i class="material-icons">link</i>Payments</button>
+    <h2>Orders Details</h2>
+    <table class="table table-striped " id="excel-table">
+      <thead>
+        <tr>
+          <!-- <th>Order ID</th> -->
+          <th>Order Date</th>
+          <th>Username</th>
+          <th>Customer Name</th>
+          <th>Amount Paid</th>
+          <!-- <th>Mode of Payment</th> -->
+          <th>Order Status</th>
+          <!-- <th>Full Name</th> -->
+          <th>Mobile Number</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Pincode</th>
+          <th>State</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <!-- <td>{{ order.orderId }}</td> -->
+          <td>{{ order.orderDate | date:'yyyy-MM-dd'  }}</td>
+          <td>{{order.username}}</td>
+          <td>{{ order.orderName | uppercase }}</td>
+          <td>{{ order.cost }}</td>
+          <!-- <td>{{ order.modeOfPayment }}</td> -->
+          <td>{{ order.orderStatus }}</td>
+          <!-- <td>{{ order.address.fullName }}</td> -->
+          <td>{{ order.phoneNumber }}</td>
+          <td>{{ order.address}}</td>
+          <td>{{ order.city }}</td>
+          <td>{{ order.pincode }}</td>
+          <td>{{ order.state }}</td> 
+          <td>
+            <button class="btn btn-outline-danger" (click)="deleteOrder(order.orderId)">
+              <i class="material-icons">delete</i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+      <!--<div>
+       <button class="btn btn-success " (click)="exportexcel()"><i class="bi bi-file-arrow-down-fill"></i>Generate Excel</button>
+      </div> -->
+  </div>

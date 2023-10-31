@@ -1,0 +1,90 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="card card-border border-black my-5 " style="display: flex; justify-content: center;">
+          <div class="card-body">
+            <div >
+              <img  class="mx-auto my-2 " style="display: block; " src="https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg" width="100px" height="100px" alt="">
+              <form [formGroup]="profileForm" >
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingUsername" placeholder="Username" formControlName="username">
+                    <label for="floatingUsername">User Name</label> 
+                    <div *ngIf="profileForm.controls['username'].invalid && (profileForm.controls['username'].dirty || profileForm.controls['username'].touched)">
+                        <small class="text-danger">User Name is required.</small>
+                    </div>
+                  </div>
+                  <!-- <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingusername" placeholder="User Name" formControlName="username">
+                    <label for="floatingusername">User Name</label>
+                    <div *ngIf="profileForm.controls['username'].hasError('required') && (profileForm.controls['username'].dirty || profileForm.controls['username'].touched)">
+                        <small class="text-danger">User Name is required.</small>
+                      </div>
+                      <div *ngIf="profileForm.controls['username'].hasError('pattern') && (profileForm.controls['username'].dirty || profileForm.controls['username'].touched)">
+                        <small class="text-danger">User Name must contain only characters</small>
+                      </div>
+                  </div> -->
+                  
+                  <div class="form-floating mb-3">
+                    <input type="tel" class="form-control" id="floatingPhoneNumber" placeholder="Phone Number" formControlName="phoneNumber">
+                    <label for="floatingPhoneNumber">Phone Number</label>
+                    <div *ngIf="profileForm.controls['phoneNumber'].hasError('required') && (profileForm.controls['phoneNumber'].dirty || profileForm.controls['phoneNumber'].touched)">
+                        <small class="text-danger">Phone Number is required.</small>
+                      </div>
+                      <div *ngIf="profileForm.controls['phoneNumber'].hasError('pattern') && (profileForm.controls['phoneNumber'].dirty || profileForm.controls['phoneNumber'].touched)">
+                        <small class="text-danger">Phone Number must contain 10 digits</small>
+                      </div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingEmail" placeholder="Email" formControlName="email">
+                    <label for="floatingEmail">Email</label>
+                    <div *ngIf="profileForm.controls['email'].hasError('required') && (profileForm.controls['email'].dirty || profileForm.controls['email'].touched)">
+                        <small class="text-danger">Email is required.</small>
+                      </div>
+                      <div *ngIf="profileForm.controls['email'].hasError('pattern') && (profileForm.controls['email'].dirty || profileForm.controls['email'].touched)">
+                        <small class="text-danger">Enter a valid email address.</small>
+                      </div>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="country" class="form-control" id="floatingCountry" placeholder="Country" formControlName="country">
+                    <label for="floatingCountry">Country</label>
+                    <div *ngIf="profileForm.controls['country'].hasError('required') && (profileForm.controls['country'].dirty || profileForm.controls['country'].touched)">
+                        <small class="text-danger">Country is required.</small>
+                      </div>
+                      <div *ngIf="profileForm.controls['country'].hasError('pattern') && (profileForm.controls['country'].dirty || profileForm.controls['country'].touched)">
+                        <small class="text-danger">Enter a valid Country.</small>
+                      </div>
+                  </div>
+                  <div class="mx-auto" style="width: 80%;">
+                    <button type="submit" class="btn btn-success mb-2 mt-2 " (click)="updateProfile(profileForm.value)" style="width: 100%;" [disabled]="profileForm.invalid">update</button>
+                    <!-- <div>
+                      <input text="password" id="oldpassword" name="oldpassword" placeholder="enter old password to change"> 
+                      <div *ngIf="info" class="text-danger">{{ info }}</div>
+                      <button class="pass" (click)="changePassword()">Change password</button>
+                    
+                    </div> -->
+                  </div>
+                  <div *ngIf="passwordPage==true">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="floatingpassword" placeholder="Password" formControlName="password">
+                      <label for="floatingpassword">Password</label>
+                      <div *ngIf="profileForm.controls['password'].hasError('required') && (profileForm.controls['password'].dirty || profileForm.controls['password'].touched)">
+                          <small class="text-danger">Password is required.</small>
+                        </div>
+                        <div *ngIf="profileForm.controls['password'].hasError('pattern') && (profileForm.controls['password'].dirty || profileForm.controls['password'].touched)">
+                          <small class="text-danger">Password must contain only characters</small>
+                        </div>
+                      
+                    </div>
+                  </div>
+                  
+              </form>
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

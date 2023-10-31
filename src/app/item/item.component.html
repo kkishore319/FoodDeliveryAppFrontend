@@ -1,0 +1,84 @@
+<app-navbar></app-navbar>
+<div class="item">
+    <!-- <h1>Item  Form</h1> -->
+    <div class="addItem">
+      <form [formGroup]="itemForm" (ngSubmit)="submitForm()">
+
+        <!-- Item Id Field -->
+        <div class="mb-3">
+          <label for="itemId" class="form-label"><b>Item Id</b></label>
+          <input type="text" formControlName="itemId" id="itemId" class="form-control" placeholder="Enter Item Id" />
+          <div *ngIf="itemForm.get('itemId')?.invalid && itemForm.get('itemId')?.touched" class="error-message">
+            <span *ngIf="itemForm.get('itemId')?.hasError('required')">Item Id is required</span>
+            <span *ngIf="itemForm.get('itemId')?.hasError('pattern')">Item Id should contain exactly 3 digits</span>
+          </div>
+        </div>
+
+        <!-- Restaurant Id Field -->
+        <div class="mb-3">
+          <label for="restaurantId" class="form-label"><b>Restaurant Id</b></label>
+          <input type="text" formControlName="restaurantId" id="restaurantId" class="form-control" placeholder="Enter Restaurant Id" />
+          <div *ngIf="itemForm.get('restaurantId')?.invalid && itemForm.get('restaurantId')?.touched" class="error-message">
+            <span *ngIf="itemForm.get('restaurantId')?.hasError('required')">Restaurant Id is required</span>
+            <span *ngIf="itemForm.get('restaurantId')?.hasError('pattern')">Restaurant Id should contain exactly 3 digits</span>
+          </div>
+        </div>
+  
+        <!-- Item Name Field -->
+        <div class="mb-3">
+          <label for="itemName" class="form-label"><b>Item Name</b></label>
+          <input type="text" formControlName="itemName" id="itemName" class="form-control" placeholder="Enter Item Name" />
+          <div *ngIf="itemForm.get('itemName')?.invalid && itemForm.get('itemName')?.touched" class="error-message">
+            <span *ngIf="itemForm.get('itemName')?.hasError('required')">Item Name is required</span>
+            <span *ngIf="itemForm.get('itemName')?.hasError('minlength')">Item Name should be at least 3 characters</span>
+            <span *ngIf="itemForm.get('itemName')?.hasError('maxlength')">Item Name should not exceed 50 characters</span>
+          </div>
+        </div>
+
+        <!-- category Field -->
+        <div class="mb-3">
+          <label for="category" class="form-label"><b>Category</b></label>
+          <input type="text" formControlName="category" id="category" class="form-control" placeholder="Enter category" />
+          <div *ngIf="itemForm.get('category')?.invalid && itemForm.get('category')?.touched" class="error-message">
+            <span *ngIf="itemForm.get('category')?.hasError('required')">Category is required</span>
+            <span *ngIf="itemForm.get('category')?.hasError('minlength')">Category should be at least 5 characters</span>
+            <span *ngIf="itemForm.get('category')?.hasError('maxlength')">Category should not exceed 50 characters</span>
+          </div>
+        </div>
+  
+        <!-- Food Description Field -->
+        <div class="mb-3">
+          <label for="description" class="form-label"><b>Food Description</b></label>
+          <input type="text" formControlName="description" id="description" class="form-control" placeholder="Enter Food Description" />
+          <div *ngIf="itemForm.get('description')?.invalid && itemForm.get('description')?.touched" class="error-message">
+            <span *ngIf="itemForm.get('description')?.hasError('required')">Food Description is required</span>
+            <span *ngIf="itemForm.get('description')?.hasError('minlength')">Food Description should be at least 3 characters</span>
+            <span *ngIf="itemForm.get('description')?.hasError('maxlength')">Food Description should not exceed 500 characters</span>
+          </div>
+        </div>
+
+        <!-- Price Field -->
+        <div class="mb-3">
+          <label for="price" class="form-label"><b>Price</b></label>
+          <input type="text" formControlName="price" id="price" class="form-control" placeholder="Enter Price" />
+          <div *ngIf="itemForm.get('price')?.invalid && itemForm.get('price')?.touched" class="error-message">
+            <span *ngIf="itemForm.get('price')?.hasError('required')">Price is required</span>
+            <span *ngIf="itemForm.get('price')?.hasError('min')">Price should be at least 3 characters</span>
+            <span *ngIf="itemForm.get('price')?.hasError('max')">Price should not exceed 2000 characters</span>
+          </div>
+        </div> 
+
+        <!-- Image Field -->
+        <div class="mb-3">
+          <label for="image" class="form-label"><b>Image</b></label>
+          <input type="text"  formControlName="image" id="image" class="form-control" placeholder="Place Image" />
+          
+        </div>
+
+        <!-- <button type="submit" class="btn btn-success">{{ isEditMode ? 'Update' : 'Submit' }}</button> -->
+        <button type="submit" class="btn btn-success">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-danger" (click)="reload()">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-secondary"  (click)="gotoitems()">Go Back</button>
+      </form>
+    </div>
+  </div>

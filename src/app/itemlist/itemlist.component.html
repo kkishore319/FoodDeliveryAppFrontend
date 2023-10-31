@@ -1,0 +1,155 @@
+<app-navbar></app-navbar>
+<div class="itemlistbg" style="background-color: lightgray;">
+<div *ngIf="isRole === 'Admin'" >
+<div class="col">
+  <button *ngIf="isRole === 'Admin'"  class="add-item-button" routerLink="/addItem">ADD Item</button>
+</div>
+<div id='sectionToNavigate' >
+<div style="display: flex; justify-content: center;">
+  <input type="text" [(ngModel)]="search" (keyup)="searchByItemName()" class="search-box mt-2 mb-2" placeholder="Search By Food Name..." id="search">
+</div>
+<div class="card-deck mt-5">
+    <div class="card mb-4 custom-card" *ngFor="let item of itemList">
+      <img src="{{item.image}}" class="card-img-top" alt="Item Image" width="35" height="50">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.itemName }}</h5>
+        <p class="card-text disc ">{{ item.description }}</p>
+        <p class="card-text">Price:<strong> ₹ {{ item.price }}</strong></p>
+        <button class="btn btn-link"  data-bs-toggle="modal" data-bs-target="#itemDetailsModel" (click)="showItemDetails(item)">See More</button>
+        <hr>
+        
+        <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="getItem(item.itemId)"><i class="material-icons">update</i></button>
+        <button class="btn btn-outline-danger" (click)="deleteItem(item.itemId)"><i class="material-icons">delete</i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel"><b>Update Item</b></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="itemForm">
+                
+                <div class="mb-3">
+                  <label for="itemName" class="form-label">Item Name</label>
+                  <input type="text" class="form-control" id="itemName" formControlName="itemName" >
+                  <div class="text-danger" *ngIf="itemForm.get('itemName')?.hasError('required') && (itemForm.get('itemName')?.dirty || itemForm.get('itemName')?.touched)">
+                      Item Name is required
+                    </div>
+                </div>
+                <!-- Add other form controls with validation -->
+                <div class="mb-3">
+                  <label for="category" class="form-label">Category</label>
+                  <input type="text" class="form-control" id="category" formControlName="category" >
+                  <div *ngIf="itemForm.get('category')?.hasError('required') && itemForm.get('category')?.touched" class="text-danger">
+                      Category is required
+                    </div>
+                </div>
+                <div class="mb-3">
+                  <label for="description" class="form-label">Description</label>
+                  <input type="text" class="form-control" id="description" formControlName="description" >
+                  <div *ngIf="itemForm.get('description')?.hasError('required') && itemForm.get('description')?.touched" class="text-danger">
+                      Description is required
+                    </div>
+                </div>
+                
+                
+                <div class="mb-3">
+                  <label for="price" class="form-label">Price</label>
+                  <input type="number" class="form-control" id="price" formControlName="price" >
+                  <div *ngIf="itemForm.get('price')?.hasError('required') && itemForm.get('price')?.touched" class="text-danger">
+                      Price is required
+                    </div>
+                </div>
+                <div class="mb-3">
+                  <label for="image" class="form-label">Image</label>
+                  <input type="text" class="form-control" id="image" formControlName="image" >
+                  <div *ngIf="itemForm.get('image')?.hasError('required') && itemForm.get('image')?.touched" class="text-danger">
+                      image is required
+                    </div>
+                </div>
+                
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" (click)="updateForm(itemForm.value)">Update</button>
+          
+        </div>
+        
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  
+<div class="modal fade" id="itemDetailsModel" tabindex="-1" aria-labelledby="itemDetailsModelLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="itemDetailsModelLabel">Item Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="selectedItem">
+          <img [src]="selectedItem.image" alt="Item Image" class="img-fluid mb-3" style="max-height: 300px;">
+          <p>Item Id:<strong> {{ selectedItem.itemId }}</strong></p>
+          <hr>
+          <!-- <p><strong>Item Restaurant Id:</strong> {{ selectedItem.restaurantId }}</p>
+          <hr> -->
+          <p>Item Name:<strong> {{ selectedItem.itemName }}</strong> </p>
+          <hr>
+          <p>Item is : <strong> {{ selectedItem.category }}</strong> </p>
+          <hr>
+          <p>Item Description:<strong> {{ selectedItem.description }}</strong> </p>
+          <hr>
+          <p>Item Price:<strong>{{ selectedItem.price }}</strong></p>
+          <hr>
+         
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="isRole !== 'Admin'" ><!--*ngIf="isRole !== 'Admin'"-->
+  
+  <div class=" mt-5 mb-5">
+      
+      <div class="text-center mt-3">
+          <input type="text" [(ngModel)]="search" (keyup)="searchByItemName()" class="search-box" placeholder="Search By Food Name..." id="search">
+      </div>
+      <div class="card-deck mt-5">
+          <div class="card mb-4 custom-card" *ngFor="let item of itemList">
+              <img src="{{item.image}}" class="card-img-top" alt="Item Image">
+              <div class="card-body">
+                  <h5 class="card-title">{{ item.itemName }}</h5>
+                  <p class="card-text disc">{{ item.description }}</p>
+                  <p class="card-text"><strong>Price:</strong> ₹ {{ item.price }}</p>
+                  <button class="btn btn-link" data-bs-toggle="modal" data-bs-target="#itemDetailsModel" (click)="showItemDetails(item)">See More</button>
+                  <hr>
+                  <button class="btn btn-outline-success" (click)="addItem(item.itemId)">Add to Cart</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+  
+</div>
+</div>

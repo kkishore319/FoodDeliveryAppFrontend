@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="bg container-fluid">
+  <div class="login">
+    <form [formGroup]="signinUser" (ngSubmit)="submitForm()">
+      <div class="mb-3">
+        <label for="username"><b>UserName</b></label><br>
+        <input type="text" formControlName="username" id="username" placeholder="Enter UserName" />
+        <div *ngIf="signinUser.controls['username'].invalid && signinUser.controls['username'].touched" class="error-message">Please Enter a valid username</div>
+      </div>
+
+      <div class="mb-3" style="position: relative;">
+        <label for="password" class="form-label title"><b>Password</b></label>
+        <div class="password-input">
+          <input type="{{ showPassword ? 'text' : 'password' }}" formControlName="password" id="password" placeholder="Enter Password" />
+          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="togglePasswordVisibility()">
+            <i class="bi bi-eye{{ showPassword ? '-slash' : '' }}"></i>
+          </button>
+        </div>
+        <div *ngIf="signinUser.get('password')?.invalid && signinUser.get('password')?.touched" class="error-message">Required</div>
+      </div>
+
+      <div>
+        <button type="submit" class="btn btn-success">Login</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-danger cancel" (click)="goBack()">Cancel</button>
+      </div>
+    </form>
+    <p>
+      New User? <a routerLink="/register">Click here</a> to sign up.
+    </p>
+  </div>
+</div>

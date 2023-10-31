@@ -1,0 +1,103 @@
+
+body {
+  background-color: #5e5656; /* Replace with the desired background color */
+  font-family: Arial, sans-serif; /* Set your preferred font */
+  margin: 0; /* Reset margin to zero to remove any default spacing */
+  padding: 0; /* Reset padding to zero */
+}
+#search {
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.card-deck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  gap: 1rem; /* Added gap between cards */
+}
+
+.card {
+  width: 18rem;
+}
+
+.card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.25rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+.btn {
+  margin-right: 0.5rem;
+}
+
+.btn-outline-success,
+.btn-outline-danger {
+  width: 7rem;
+}
+#staticBackdrop{
+  font-weight: bold;
+}
+
+.disc {
+  white-space: nowrap;
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.custom-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.custom-card:hover {
+  transform: scale(1.05);
+}
+
+.search-box {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Center the search box */
+.text-center {
+  text-align: center;
+}
+
+/* Style for the "Add to Cart" button */
+.add-item-button {
+  background-color: #198754;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  float: right;
+  margin-top: 10px;
+    margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.add-item-button:hover {
+  background-color: #12603D;
+}

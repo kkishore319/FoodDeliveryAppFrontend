@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="container mt-5 mb-5">
+    <button class="btn btn-outline-success float-end mb-3" (click)="goBack()">Go Back</button>
+    <h2>Payments Details</h2>
+    <table class="table table-striped " id="excel-table">
+      <thead>
+        <tr>
+          <th>Transaction id</th>
+          <th>Payment Date</th>
+          <th>Username</th>
+          <th>Order Id</th>
+          <th>Amount Paid</th>
+          <!-- <th>Mode of Payment</th> -->
+          <th>payment Status</th>
+          <!-- <th>Full Name</th> -->
+          <!-- <th>Mobile Number</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Pincode</th>
+          <th>State</th>
+          <th>Action</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payment of payments">
+          <td>{{ payment.transactionId }}</td>
+          <td>{{ payment.paymentDate | date:'dd-MM-yyyy'  }}</td>
+          <td>{{payment.username| uppercase}}</td>
+          <!-- <td>{{ payment.paymentName | uppercase }}</td> -->
+          <td>{{ payment.orderId }}</td>
+          <!-- <td>{{ payment.modeOfPayment }}</td> -->
+          <td>{{ payment.amount }}</td>
+          <td>{{ payment.transactionStatus }}</td>
+          <!-- <td>{{ payment.phoneNumber }}</td>
+          <td>{{ payment.address}}</td>
+          <td>{{ payment.city }}</td>
+          <td>{{ payment.pincode }}</td>
+          <td>{{ payment.state }}</td>  -->
+          <td>
+            <button class="btn btn-outline-danger" (click)="deletePayment(payment.transactionId)">
+              <i class="material-icons">delete</i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+      <!--<div>
+       <button class="btn btn-success " (click)="exportexcel()"><i class="bi bi-file-arrow-down-fill"></i>Generate Excel</button>
+      </div> -->
+  </div>

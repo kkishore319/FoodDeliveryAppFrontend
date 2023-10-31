@@ -1,0 +1,134 @@
+
+<app-navbar></app-navbar>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog">
+  
+      <div class="modal-content">
+  
+        <div class="modal-header">
+  
+          <h1 class="modal-title fs-5" id="exampleModalLabel"><b>Update Restaurant</b></h1>
+  
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  
+        </div>
+  
+        <div class="modal-body">
+    <form [formGroup]="formValue">
+        <div class="mb-3"   >
+            <label for="restaurantId" class="form-label"><b>Restaurant Id</b></label>
+            <input type="text" formControlName="restaurantId" id="restaurantId" class="form-control" placeholder="Enter Restaurant Id" />
+            <div *ngIf="formValue.get('restaurantId')?.invalid && formValue.get('restaurantId')?.touched" class="error-message">
+              <span *ngIf="formValue.get('restaurantId')?.hasError('required')">Restaurant Id is required</span>
+              <span *ngIf="formValue.get('restaurantId')?.hasError('pattern')">Restaurant Id should contain exactly 3 digits</span>
+            </div>
+          </div>
+    
+          <!-- Restaurant Name Field -->
+          <div class="mb-3">
+            <label for="restaurantName" class="form-label"><b>Restaurant Name</b></label>
+            <input type="text" formControlName="restaurantName" id="restaurantName" class="form-control" placeholder="Enter Restaurant Name" />
+            <div *ngIf="formValue.get('restaurantName')?.invalid && formValue.get('restaurantName')?.touched" class="error-message">
+              <span *ngIf="formValue.get('restaurantName')?.hasError('required')">Restaurant Name is required</span>
+              <span *ngIf="formValue.get('restaurantName')?.hasError('minlength')">Restaurant Name should be at least 3 characters</span>
+              <span *ngIf="formValue.get('restaurantName')?.hasError('maxlength')">Restaurant Name should not exceed 50 characters</span>
+            </div>
+          </div>
+  
+          <!-- rating Field -->
+          <div class="mb-3">
+            <label for="rating" class="form-label"><b>Rating</b></label>
+            <input type="number" formControlName="rating" id="rating" class="form-control" placeholder="Enter rating" />
+            <div *ngIf="formValue.get('rating')?.invalid && formValue.get('rating')?.touched" class="error-message">
+              <span *ngIf="formValue.get('rating')?.hasError('required')">Rating are required</span>
+              <span *ngIf="formValue.get('rating')?.hasError('min')">rRating should be a positive number</span>
+              <span *ngIf="formValue.get('rating')?.hasError('max')">Rating should not exceed 5</span>
+            </div>
+          </div>
+    
+          <!-- Food Type Field -->
+          <div class="mb-3">
+            <label for="type" class="form-label"><b>Food Type</b></label>
+            <input type="text" formControlName="type" id="type" class="form-control" placeholder="Enter Food Type" />
+            <div *ngIf="formValue.get('type')?.invalid && formValue.get('type')?.touched" class="error-message">
+              <span *ngIf="formValue.get('type')?.hasError('required')">Food Type is required</span>
+              <span *ngIf="formValue.get('type')?.hasError('minlength')">Food Type should be at least 3 characters</span>
+              <span *ngIf="formValue.get('type')?.hasError('maxlength')">Food Type should not exceed 30 characters</span>
+            </div>
+          </div>
+    
+          <!-- Location Field -->
+          <div class="mb-3">
+            <label for="location" class="form-label"><b>Location</b></label>
+            <input type="text" formControlName="location" id="location" class="form-control" placeholder="Enter Location" />
+            <div *ngIf="formValue.get('location')?.invalid && formValue.get('location')?.touched" class="error-message">
+              <span *ngIf="formValue.get('location')?.hasError('required')">Location is required</span>
+              <span *ngIf="formValue.get('location')?.hasError('minlength')">Location should be at least 5 characters</span>
+              <span *ngIf="formValue.get('location')?.hasError('maxlength')">Location should not exceed 50 characters</span>
+            </div>
+          </div>
+      
+            <!-- <button type="submit" class="btn btn-success">{{ isEditMode ? 'Update' : 'Submit' }}</button> -->
+        
+          </form>
+  
+        </div>
+  
+        <div class="modal-footer">
+  
+          <button type="button" class="btn btn-secondary" id="cancel" data-bs-dismiss="modal" (click)="onSubmit()">Close</button>
+  
+          <button type="button" (click)="updateRestaurant()"  class="btn btn-success">Save changes</button> 
+  
+        </div>
+  
+      </div>
+  
+    </div>
+  
+  </div>
+  
+  
+  
+  <!--------------------------------------------------------------------------------------------------------------------------->
+ 
+  <body>
+    
+  <div class="container-fluid ">
+   
+    <div class="row">
+      <div class="col">
+        <div class="form-group " style="display: inline;">
+          <input type="text"  (keyup)="applyFilter($event)" id="filter" placeholder="Search restaurant">
+          <button *ngIf="isRole === 'Admin'" class="add-button" routerLink="/addRestaurant"><i class="material-icons">add </i>Add Restaurant</button>
+        </div>
+      </div>
+    </div>
+  
+  
+ 
+  
+  
+    <div class="row">
+      <div class="col">
+        <div class="card-deck">
+          <div class="card" *ngFor="let row of dataSource">
+            <div class="card-body">
+              <h3 class="card-title" style="font-size: larger; text-decoration: underline;;"><b>{{ row.restaurantName }}</b></h3>
+              <p class="card-text" *ngIf="isRole === 'Admin'">Restaurant ID: <b>{{ row.restaurantId }}</b></p>
+              <p class="card-text" *ngIf="isRole === 'User'">Rating:<b> {{ row.rating }}</b></p>
+              <p class="card-text">Food Type: <b>{{ row.type }}</b></p>
+              <p class="card-text">Location: <b>{{ row.location }}</b></p>
+              <div class="card-buttons">
+                <button *ngIf="isRole === 'Admin'" class="btn btn-primary bb" (click)="EditForm(row)" data-bs-toggle="modal" data-bs-target="#exampleModal"><abbr title="Update"><i class="material-icons">update</i></abbr></button>
+                <button *ngIf="isRole === 'Admin'" class="btn btn-danger bb" (click)="deleteRestaurant(row.restaurantId)"><abbr title="Delete"><i class="material-icons">delete</i></abbr></button>
+                <button class="btn btn-success bb" (click)="redirectToItems(row.restaurantName)"><abbr title="Search Food"><i class="material-icons">search</i></abbr></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>

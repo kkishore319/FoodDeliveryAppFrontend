@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+
+<div class="order-form">
+  <h2>Enter your details </h2>
+  <form [formGroup]="orderForm" (ngSubmit)="submitOrder()">
+    <div class="form-group">
+      <label for="orderName">Name</label>
+      <input type="text" id="orderName" formControlName="orderName" />
+      <div *ngIf="orderForm.get('orderName')?.invalid && orderForm.get('orderName')?.touched" class="error-message">
+        <div *ngIf="orderForm.get('orderName')?.hasError('required')">OrderName is required</div>
+        <div *ngIf="orderForm.get('orderName')?.hasError('minlength')">OrderName should be at least 3 characters</div>
+        <div *ngIf="orderForm.get('orderName')?.hasError('maxlength')">OrderName should not exceed 20 characters</div>
+      </div>
+    </div>
+
+    <!-- <div class="form-group" style="display: none;">
+      <label for="username">Name</label>
+      <input type="text" id="username" formControlName="username" />
+      <div *ngIf="orderForm.get('username')?.invalid && orderForm.get('username')?.touched" class="error-message">
+        <div *ngIf="orderForm.get('username')?.hasError('required')">Username is required</div>
+      </div>
+    </div> -->
+
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" id="phoneNumber" formControlName="phoneNumber" />
+      <div *ngIf="orderForm.get('phoneNumber')?.invalid && orderForm.get('phoneNumber')?.touched" class="error-message">
+        <div *ngIf="orderForm.get('phoneNumber')?.hasError('required')">Phone Number is required</div>
+        <!-- Add more error messages for phoneNumber validation as needed -->
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="address">Delivery Address</label>
+      <input type="text" id="address" formControlName="address" />
+      <div *ngIf="orderForm.get('address')?.invalid && orderForm.get('address')?.touched" class="error-message">
+      <div *ngIf="orderForm.get('address')?.hasError('required')">Address is required</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="pincode">Pincode</label>
+      <input
+        type="text"
+        class="form-control"
+        id="pincode"
+        formControlName="pincode"
+      />
+      <div *ngIf="orderForm.get('pincode')?.invalid && orderForm.get('pincode')?.touched" class="error-message">
+      <div *ngIf="orderForm.get('pincode')?.hasError('required')">Pincode is required</div>
+      <span *ngIf="orderForm.get('pincode')?.hasError('pattern')">Pincode should contain exactly 6 digits</span>
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="city">City</label>
+      <input type="text" id="city" formControlName="city" />
+      <div *ngIf="orderForm.get('city')?.invalid && orderForm.get('city')?.touched" class="error-message">
+      <div *ngIf="orderForm.get('city')?.hasError('required')">City is required</div>
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="state">State</label>
+      <input type="text" id="state" formControlName="state" />
+      <div *ngIf="orderForm.get('state')?.invalid && orderForm.get('state')?.touched" class="error-message">
+      <div *ngIf="orderForm.get('state')?.hasError('required')">State is required</div>
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="orderInstructions">Order Instructions</label>
+      <textarea id="orderInstructions" formControlName="orderInstructions"></textarea>
+    </div>
+    <button type="submit" [disabled]="orderForm.invalid">Place Order</button>
+  </form>
+</div>

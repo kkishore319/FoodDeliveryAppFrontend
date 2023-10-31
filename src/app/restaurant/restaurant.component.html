@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+<div class="restaurant">
+    <!-- <h1>Restaurant  Form</h1> -->
+    <div class="addrestaurant">
+      <form [formGroup]="restaurantForm" (ngSubmit)="submitForm()">
+        <!-- Restaurant Id Field -->
+        <div class="mb-3">
+          <label for="restaurantId" class="form-label"><b>Restaurant Id</b></label>
+          <input type="text" formControlName="restaurantId" id="restaurantId" class="form-control" placeholder="Enter Restaurant Id" />
+          <div *ngIf="restaurantForm.get('restaurantId')?.invalid && restaurantForm.get('restaurantId')?.touched" class="error-message">
+            <span *ngIf="restaurantForm.get('restaurantId')?.hasError('required')">Restaurant Id is required</span>
+            <span *ngIf="restaurantForm.get('restaurantId')?.hasError('pattern')">Restaurant Id should contain exactly 3 digits</span>
+          </div>
+        </div>
+  
+        <!-- Restaurant Name Field -->
+        <div class="mb-3">
+          <label for="restaurantName" class="form-label"><b>Restaurant Name</b></label>
+          <input type="text" formControlName="restaurantName" id="restaurantName" class="form-control" placeholder="Enter Restaurant Name" />
+          <div *ngIf="restaurantForm.get('restaurantName')?.invalid && restaurantForm.get('restaurantName')?.touched" class="error-message">
+            <span *ngIf="restaurantForm.get('restaurantName')?.hasError('required')">Restaurant Name is required</span>
+            <span *ngIf="restaurantForm.get('restaurantName')?.hasError('minlength')">Restaurant Name should be at least 3 characters</span>
+            <span *ngIf="restaurantForm.get('restaurantName')?.hasError('maxlength')">Restaurant Name should not exceed 50 characters</span>
+          </div>
+        </div>
+
+        <!-- rating Field -->
+        <div class="mb-3">
+          <label for="rating" class="form-label"><b>Rating</b></label>
+          <input type="number" formControlName="rating" id="rating" class="form-control" placeholder="Enter rating" />
+          <div *ngIf="restaurantForm.get('rating')?.invalid && restaurantForm.get('rating')?.touched" class="error-message">
+            <span *ngIf="restaurantForm.get('rating')?.hasError('required')">Rating are required</span>
+            <span *ngIf="restaurantForm.get('rating')?.hasError('min')">rRating should be a positive number</span>
+            <span *ngIf="restaurantForm.get('rating')?.hasError('max')">Rating should not exceed 5</span>
+          </div>
+        </div>
+  
+        <!-- Food Type Field -->
+        <div class="mb-3">
+          <label for="type" class="form-label"><b>Food Type</b></label>
+          <input type="text" formControlName="type" id="type" class="form-control" placeholder="Enter Food Type" />
+          <div *ngIf="restaurantForm.get('type')?.invalid && restaurantForm.get('type')?.touched" class="error-message">
+            <span *ngIf="restaurantForm.get('type')?.hasError('required')">Food Type is required</span>
+            <span *ngIf="restaurantForm.get('type')?.hasError('minlength')">Food Type should be at least 3 characters</span>
+            <span *ngIf="restaurantForm.get('type')?.hasError('maxlength')">Food Type should not exceed 30 characters</span>
+          </div>
+        </div>
+  
+        <!-- Location Field -->
+        <div class="mb-3">
+          <label for="location" class="form-label"><b>Location</b></label>
+          <input type="text" formControlName="location" id="location" class="form-control" placeholder="Enter Location" />
+          <div *ngIf="restaurantForm.get('location')?.invalid && restaurantForm.get('location')?.touched" class="error-message">
+            <span *ngIf="restaurantForm.get('location')?.hasError('required')">Location is required</span>
+            <span *ngIf="restaurantForm.get('location')?.hasError('minlength')">Location should be at least 5 characters</span>
+            <span *ngIf="restaurantForm.get('location')?.hasError('maxlength')">Location should not exceed 50 characters</span>
+          </div>
+        </div>
+  
+       
+  
+        
+  
+        
+  
+        <!-- <button type="submit" class="btn btn-success">{{ isEditMode ? 'Update' : 'Submit' }}</button> -->
+        <button type="submit" class="btn btn-success">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-danger" (click)="reload()">Cancel</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-secondary" (click)="goback()">Go Back</button>
+      </form>
+    </div>
+  </div>

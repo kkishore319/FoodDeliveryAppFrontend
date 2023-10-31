@@ -1,0 +1,92 @@
+
+.nav-link {
+  color: aliceblue;
+}
+
+/* Style the navigation bar background */
+.navbar {
+  background-color: transparent;
+  /* Change to your preferred background color */
+}
+
+/* Style the brand/logo */
+.navbar-brand img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  /* Add spacing between the logo and text */
+}
+
+/* Style the active link */
+.nav-link.active {
+  font-weight: bold;
+  /* Make the active link text bold */
+}
+
+/* Style the dropdown menu */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  /* Show the dropdown menu on hover */
+}
+
+/* Style the logout link */
+.nav-link.logout-link {
+  cursor: pointer;
+  color: #f5eff0;
+  /* Change to your preferred text color */
+}
+
+/* Style the dropdown menu items */
+.dropdown-menu {
+  background-color: #28a745;
+  /* Change to your preferred background color */
+}
+
+/* Style the dropdown item links */
+.dropdown-item {
+  color: #f5eff0;
+  /* Change to your preferred text color */
+}
+
+/* Style the dropdown item links on hover */
+.dropdown-item:hover {
+  background-color: #218838;
+  /* Change to your preferred hover background color */
+  color: #f5eff0;
+  /* Change to your preferred hover text color */
+}
+
+/* Style the navigation items margin */
+.nav-item {
+  margin-right: 10px;
+  /* Add spacing between navigation items */
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #000000;
+  border-radius: 75%;
+}
+
+.uhh{
+  text-align: right;
+}
+

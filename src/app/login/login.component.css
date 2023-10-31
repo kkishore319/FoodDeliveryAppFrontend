@@ -1,0 +1,89 @@
+.error-message{
+    color: red;
+}
+/* .bg{
+    background-image: 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+  */
+/* component.css */
+
+.bg {
+    padding-top: 2%;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("/assets/loginBG.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    min-height: calc(100vh - 70px);/* Ensure the background covers the entire viewport height */
+  }
+  
+  .login {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for the login form */
+    border-radius: 10px; /* Rounded corners for the login form */
+    padding: 20px;
+    max-width: 400px; /* Limit the width of the login form */
+    margin: 0 auto; /* Center the form horizontally on the page */
+    padding-top: 1%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a subtle box shadow to the form */
+  }
+  
+  .login form {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  
+  .login label {
+    font-weight: bold;
+  }
+  
+  .login input {
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .login button {
+    background-color: #28a745; /* Green button background color */
+    color: #fff; /* White button text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login button.cancel {
+    background-color: #dc3545; /* Red cancel button background color */
+  }
+  
+  .login button, .login a {
+    margin-top: 10px;
+  }
+  
+  .login .btn-outline-secondary {
+    background-color: transparent;
+    border: none;
+    color: #007bff; /* Blue icon color */
+    font-size: 20px;
+    padding: 0;
+  }
+  
+  .login .error-message {
+    color: #dc3545; /* Red error message text color */
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  /* Media query to adjust styles on smaller screens */
+  @media (max-width: 768px) {
+    .login {
+      width: 80%; /* Adjust the form width for smaller screens */
+    }
+  }
+
+  

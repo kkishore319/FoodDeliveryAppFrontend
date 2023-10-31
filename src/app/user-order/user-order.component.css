@@ -1,0 +1,37 @@
+/* Add this CSS to style the "Orders Details" table and page */
+
+.container {
+  background-color: #f0f0f0; /* Set the background color for the container */
+  padding: 20px; /* Add some padding to the container */
+  border-radius: 10px; /* Add rounded corners to the container */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+h2 {
+  text-align: center; /* Center the text */
+  color: #ba8d11; /* Set the text color */
+}
+
+table {
+  width: 100%; /* Make the table full width */
+  background-color: #fff; /* Set a white background color for the table */
+  border-collapse: collapse; /* Collapse table borders */
+  border-radius: 10px; /* Add rounded corners to the table */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a slight shadow to the table */
+}
+
+th, td {
+  text-align: center; /* Center-align the table headers and cells */
+  padding: 10px; /* Add padding to table cells */
+}
+
+thead {
+  background-color: #ba8d11; /* Set the background color for the table header */
+  color: #fff; /* Set the text color for table headers */
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2; /* Alternate row background color */
+}
+
+

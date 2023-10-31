@@ -1,0 +1,94 @@
+/* Style the container */
+.container {
+    padding: 20px;
+  }
+  
+  /* Style the card */
+  .card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style the card body */
+  .card-body {
+    text-align: center;
+  }
+  
+  /* Style the image */
+  .card-body img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+  }
+  
+  /* Style the form */
+  form {
+    padding: 20px;
+  }
+  
+  /* Style the form controls */
+  .form-control {
+    border-radius: 3px;
+  }
+  
+  /* Style the form labels */
+  .form-label {
+    font-weight: bold;
+  }
+  
+  /* Style the buttons */
+  .btn-success {
+    width: 100%;
+    background-color: #28a745;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  /* Style the "Change Password" button */
+  .pass {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    color: #007bff;
+  }
+  
+  /* Error message style */
+  .text-danger {
+    color: #dc3545;
+  }
+  
+  .ppp {
+    margin-top: 20px;
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    /* justify-content: center; */ /* Remove this line */
+  }
+  
+  #oldpassword {
+    /* margin-right: 10px; */ /* Remove this line */
+    padding: 8px;
+    border: 1px solid #ccc;
+    flex: 1;
+  }
+  
+  .pass {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+  }
+  
+  .pass:hover {
+    background-color: #0056b3;
+  }
+  

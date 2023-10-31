@@ -1,0 +1,10 @@
+<div class="bg1">
+  <div class="container">
+    <h2 class="heading">Make a Payment</h2>
+    <div class="payment-container">
+      <button class="pay-button" (click)="payNow()"   >Pay {{ cost | currency: 'INR' }}</button>
+      <!-- (click)="changeStatus() -->
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 style="text-align: center;  color: #198754;"><b>User Details</b></h2>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Mobile Number</th>
+              <th>Email</th>
+              <th>Country</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.username }}</td>
+              <td>{{ user.phoneNumber }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.country }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
